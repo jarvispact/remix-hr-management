@@ -2,6 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer components {
+    .invisible-button {
+        @apply inline-flex items-center justify-center bg-transparent text-text hover:text-focus focus-visible:outline focus-visible:outline-focus focus-visible:outline-offset-2 focus-visible:outline-[1.5px];
+    }
+}
+
 .theme {
     --color-gray-50: #f8fafc;
     --color-gray-100: #f1f5f9;
