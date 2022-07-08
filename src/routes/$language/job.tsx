@@ -12,13 +12,13 @@ export const loader: LoaderFunction = async () => {
     return json<LoaderData>({ films: filmDbResponse.rows });
 };
 
-export default function Index() {
+export default function Job() {
     const { films } = useLoaderData<LoaderData>();
     console.log({ films });
 
     return (
         <div className="font-sans">
-            <h1>Welcome to Remix</h1>
+            <h1>job</h1>
             <ul>
                 {films.map((film) => (
                     <li key={film.film_id}>

@@ -2,27 +2,21 @@ import type { ReactNode } from 'react';
 import { ids } from '~/dom-ids';
 
 export type HomePageProps = {
+    aside: ReactNode;
     header: ReactNode;
-    footer: ReactNode;
     children: ReactNode;
 };
 
-export const Page = ({ header, footer, children }: HomePageProps) => {
+export const Page = ({ header, aside, children }: HomePageProps) => {
     return (
-        <div className="text-text flex flex-col gap-12 md:gap-20">
-            <header
-                aria-labelledby={ids.pageHeader}
-                className="py-8 md:py-12 px-[5vw] 2xl:px-[15vw] 3xl:px-[22vw]"
-            >
+        <div className="text-text grid grid-cols-[280px_auto] grid-rows-[60px_auto] fixed inset-0">
+            <aside aria-labelledby={ids.pageAside} className="row-span-2">
+                {aside}
+            </aside>
+            <header aria-labelledby={ids.pageHeader} className="">
                 {header}
             </header>
-            <main className="flex flex-col gap-20">{children}</main>
-            <footer
-                aria-labelledby={ids.pageFooter}
-                className="py-20 px-[5vw] 2xl:px-[15vw] 3xl:px-[22vw] border-t border-t-border"
-            >
-                {footer}
-            </footer>
+            <main className="">{children}</main>
         </div>
     );
 };

@@ -29,13 +29,14 @@ type CommonTranslationKey =
     | 'language.link.switch-to-en'
     | 'language.link.switch-to-de'
     | 'dark-mode.button.lights-on'
-    | 'dark-mode.button.lights-off';
+    | 'dark-mode.button.lights-off'
+    | 'page-aside.h2';
 
-type LandingPageTranslationKey = 'h1' | 'section-welcome-h2' | 'section-welcome-text';
+type DashboardTranslationKey = 'h1';
 
 export type TranslationKey =
     | `common.${CommonTranslationKey}`
-    | `landing-page.${LandingPageTranslationKey}`;
+    | `dashboard.${DashboardTranslationKey}`;
 
 const replaceIndexWithInterpolation =
     (interpolations: (string | number)[] = []) =>

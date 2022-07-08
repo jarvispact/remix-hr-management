@@ -8,8 +8,7 @@ export const en: { [TK in TranslationKey]: string } = {
     'common.language.link.switch-to-de': 'switch to german',
     'common.dark-mode.button.lights-on': 'dark mode off',
     'common.dark-mode.button.lights-off': 'dark mode on',
+    'common.page-aside.h2': 'Sidebar',
 
-    'landing-page.h1': 'Remix DVD rental',
-    'landing-page.section-welcome-h2': 'Welcome',
-    'landing-page.section-welcome-text': 'Welcome to the online DVD rental administration.',
+    'dashboard.h1': 'Remix DVD rental',
 };

@@ -8,8 +8,7 @@ export const de: { [TK in TranslationKey]: string } = {
     'common.language.link.switch-to-de': 'Zu Deutsch wechseln',
     'common.dark-mode.button.lights-on': 'Dunkler Modus aus',
     'common.dark-mode.button.lights-off': 'Dunkler Modus an',
+    'common.page-aside.h2': 'Sidebar',
 
-    'landing-page.h1': 'Remix DVD Verleih',
-    'landing-page.section-welcome-h2': 'Willkommen',
-    'landing-page.section-welcome-text': 'Willkommen zur Online DVD Verleih Verwaltung.',
+    'dashboard.h1': 'Remix DVD Verleih',
 };

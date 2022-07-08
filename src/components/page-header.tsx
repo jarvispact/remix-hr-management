@@ -10,7 +10,7 @@ type HeaderProps = {
 
 export const PageHeader = ({ h1 }: HeaderProps) => {
     return (
-        <div className="flex justify-between items-center">
+        <div className="flex justify-between items-center h-full px-4 bg-surface-1">
             <h1 id={ids.pageHeader} className="text-2xl font-bold">
                 {h1}
             </h1>

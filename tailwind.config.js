@@ -51,14 +51,10 @@ module.exports = {
             'surface-1': 'var(--color-surface-1)',
 
             text: 'var(--color-text)',
-            icon: 'var(--color-icon)',
             border: 'var(--color-border)',
-
             focus: 'var(--color-focus)',
-            'success-text': 'var(--color-success-text)',
-            'success-bg': 'var(--color-success-bg)',
-            'danger-text': 'var(--color-danger-text)',
-            'danger-bg': 'var(--color-danger-bg)',
+            'aside-link-hover': 'var(--color-aside-link-hover)',
+            'aside-link-active': 'var(--color-aside-link-active)',
         },
         borderRadius: {
             sm: 'var(--radii-sm)',

@@ -6,6 +6,10 @@
     .invisible-button {
         @apply inline-flex items-center justify-center bg-transparent text-text hover:text-focus focus-visible:outline focus-visible:outline-focus focus-visible:outline-offset-2 focus-visible:outline-[1.5px];
     }
+
+    .aside-link {
+        @apply p-3 flex items-center gap-4 rounded-sm outline-focus outline-1 focus-visible:outline hover:bg-aside-link-hover;
+    }
 }
 
 .theme {
@@ -45,14 +49,10 @@
     --color-surface-1: white;
 
     --color-text: var(--color-gray-900);
-    --color-icon: var(--color-gray-400);
     --color-border: var(--color-gray-300);
-
     --color-focus: var(--color-brand-dark);
-    --color-success-text: var(--color-success-dark);
-    --color-success-bg: var(--color-success-light);
-    --color-danger-text: var(--color-danger-dark);
-    --color-danger-bg: var(--color-danger-light);
+    --color-aside-link-hover: var(--color-gray-100);
+    --color-aside-link-active: var(--color-gray-200);
 
     --radii-sm: 2px;
     --radii-md: 4px;
@@ -76,15 +76,10 @@
     --color-surface-1: var(--color-gray-800);
 
     --color-text: var(--color-gray-50);
-    --color-icon: var(--color-gray-500);
     --color-border: var(--color-gray-600);
-    --color-brand-text: var(--color-brand-light);
-
     --color-focus: var(--color-brand-light);
-    --color-success-text: var(--color-success-light);
-    --color-success-bg: transparent;
-    --color-danger-text: var(--color-danger-light);
-    --color-danger-bg: transparent;
+    --color-aside-link-hover: var(--color-gray-700);
+    --color-aside-link-active: var(--color-gray-600);
 }
 
 @media (prefers-color-scheme: light) {
@@ -93,15 +88,10 @@
         --color-surface-1: white;
 
         --color-text: var(--color-gray-900);
-        --color-icon: var(--color-gray-400);
         --color-border: var(--color-gray-300);
-        --color-brand-text: var(--color-brand);
-
         --color-focus: var(--color-brand-dark);
-        --color-success-text: var(--color-success-dark);
-        --color-success-bg: var(--color-success-light);
-        --color-danger-text: var(--color-danger-dark);
-        --color-danger-bg: var(--color-danger-light);
+        --color-aside-link-hover: var(--color-gray-100);
+        --color-aside-link-active: var(--color-gray-200);
     }
 }
 
@@ -111,14 +101,9 @@
         --color-surface-1: var(--color-gray-800);
 
         --color-text: var(--color-gray-50);
-        --color-icon: var(--color-gray-500);
         --color-border: var(--color-gray-600);
-        --color-brand-text: var(--color-brand-light);
-
         --color-focus: var(--color-brand-light);
-        --color-success-text: var(--color-success-light);
-        --color-success-bg: transparent;
-        --color-danger-text: var(--color-danger-light);
-        --color-danger-bg: transparent;
+        --color-aside-link-hover: var(--color-gray-700);
+        --color-aside-link-active: var(--color-gray-600);
     }
 }
