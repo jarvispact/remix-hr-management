@@ -1,7 +1,7 @@
 import type { TranslationKey } from '../i18n';
 
 export const de: { [TK in TranslationKey]: string } = {
-    'common.meta.title': 'DVD Verleih',
+    'common.meta.title': 'HR Verwaltung',
     'common.meta.description':
         'Performante und barrierefreie Web, Mobile und Desktop Applikationen. Exakt auf deine Bedürfnisse zugeschnitten.',
     'common.language.link.switch-to-en': 'Zu Englisch wechseln',
@@ -10,5 +10,5 @@ export const de: { [TK in TranslationKey]: string } = {
     'common.dark-mode.button.lights-off': 'Dunkler Modus an',
     'common.page-aside.h2': 'Sidebar',
 
-    'dashboard.h1': 'Remix DVD Verleih',
+    'dashboard.h1': 'HR Verwaltung',
 };

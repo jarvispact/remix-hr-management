@@ -3,26 +3,28 @@ import { json } from '@remix-run/node';
 import { Link, useLoaderData } from '@remix-run/react';
 import { db } from '~/pg.server';
 
+type TRegion = { region_id: number; region_name: string };
+
 type LoaderData = {
-    films: { film_id: number; title: string }[];
+    regions: TRegion[];
 };
 
 export const loader: LoaderFunction = async () => {
-    const filmDbResponse = await db.query('SELECT * FROM film');
-    return json<LoaderData>({ films: filmDbResponse.rows });
+    const res = await db.query('SELECT * FROM regions');
+    return json<LoaderData>({ regions: res.rows });
 };
 
 export default function Region() {
-    const { films } = useLoaderData<LoaderData>();
-    console.log({ films });
+    const { regions } = useLoaderData<LoaderData>();
+    console.log({ regions });
 
     return (
         <div className="font-sans">
             <h1>region</h1>
             <ul>
-                {films.map((film) => (
-                    <li key={film.film_id}>
-                        <Link to={film.film_id.toString()}>{film.title}</Link>
+                {regions.map((region) => (
+                    <li key={region.region_id}>
+                        <Link to={region.region_id.toString()}>{region.region_name}</Link>
                     </li>
                 ))}
             </ul>

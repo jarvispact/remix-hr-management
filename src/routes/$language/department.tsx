@@ -3,26 +3,30 @@ import { json } from '@remix-run/node';
 import { Link, useLoaderData } from '@remix-run/react';
 import { db } from '~/pg.server';
 
+type TDepartment = { department_id: number; department_name: string; location_id: number };
+
 type LoaderData = {
-    films: { film_id: number; title: string }[];
+    departments: TDepartment[];
 };
 
 export const loader: LoaderFunction = async () => {
-    const filmDbResponse = await db.query('SELECT * FROM film');
-    return json<LoaderData>({ films: filmDbResponse.rows });
+    const res = await db.query('SELECT * FROM departments');
+    return json<LoaderData>({ departments: res.rows });
 };
 
 export default function Department() {
-    const { films } = useLoaderData<LoaderData>();
-    console.log({ films });
+    const { departments } = useLoaderData<LoaderData>();
+    console.log({ departments });
 
     return (
         <div className="font-sans">
             <h1>department</h1>
             <ul>
-                {films.map((film) => (
-                    <li key={film.film_id}>
-                        <Link to={film.film_id.toString()}>{film.title}</Link>
+                {departments.map((department) => (
+                    <li key={department.department_id}>
+                        <Link to={department.department_id.toString()}>
+                            {department.department_name}
+                        </Link>
                     </li>
                 ))}
             </ul>

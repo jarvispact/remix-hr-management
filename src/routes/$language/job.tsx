@@ -3,26 +3,28 @@ import { json } from '@remix-run/node';
 import { Link, useLoaderData } from '@remix-run/react';
 import { db } from '~/pg.server';
 
+type TJob = { job_id: number; job_title: string; min_salary: number; max_salary: number };
+
 type LoaderData = {
-    films: { film_id: number; title: string }[];
+    jobs: TJob[];
 };
 
 export const loader: LoaderFunction = async () => {
-    const filmDbResponse = await db.query('SELECT * FROM film');
-    return json<LoaderData>({ films: filmDbResponse.rows });
+    const res = await db.query('SELECT * FROM jobs');
+    return json<LoaderData>({ jobs: res.rows });
 };
 
 export default function Job() {
-    const { films } = useLoaderData<LoaderData>();
-    console.log({ films });
+    const { jobs } = useLoaderData<LoaderData>();
+    console.log({ jobs });
 
     return (
         <div className="font-sans">
             <h1>job</h1>
             <ul>
-                {films.map((film) => (
-                    <li key={film.film_id}>
-                        <Link to={film.film_id.toString()}>{film.title}</Link>
+                {jobs.map((job) => (
+                    <li key={job.job_id}>
+                        <Link to={job.job_id.toString()}>{job.job_title}</Link>
                     </li>
                 ))}
             </ul>

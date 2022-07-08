@@ -1,5 +1,5 @@
-# remix-dvd-rental
-a simple dvd rental web application to learn remix.run
+# remix-hr-management
+a simple hr management web application to learn remix.run
 
 ## prerequisites
 
