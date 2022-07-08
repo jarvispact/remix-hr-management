@@ -59,14 +59,13 @@ export default function App() {
                 <I18nProvider translations={translations}>
                     {({ t }) => (
                         <Page
-                            header={<PageHeader h1={t('dashboard.h1')} />}
+                            header={<PageHeader h1={t('common.page.h1')} />}
                             aside={<PageAside h2={t('common.page-aside.h2')} />}
                         >
                             <Outlet />
                         </Page>
                     )}
                 </I18nProvider>
-                <Outlet />
                 <ScrollRestoration />
                 <Scripts />
                 <LiveReload />

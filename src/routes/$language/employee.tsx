@@ -30,7 +30,7 @@ export default function Employee() {
     console.log({ employees });
 
     return (
-        <div className="font-sans">
+        <div>
             <h1>employee</h1>
             <ul>
                 {employees.map((employee) => (

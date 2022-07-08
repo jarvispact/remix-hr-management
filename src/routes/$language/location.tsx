@@ -26,7 +26,7 @@ export default function Location() {
     console.log({ locations });
 
     return (
-        <div className="font-sans">
+        <div>
             <h1>location</h1>
             <ul>
                 {locations.map((location) => (

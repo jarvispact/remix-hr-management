@@ -19,7 +19,7 @@ export default function Department() {
     console.log({ departments });
 
     return (
-        <div className="font-sans">
+        <div>
             <h1>department</h1>
             <ul>
                 {departments.map((department) => (

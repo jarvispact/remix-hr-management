@@ -19,7 +19,7 @@ export default function Country() {
     console.log({ countries });
 
     return (
-        <div className="font-sans">
+        <div>
             <h1>country</h1>
             <ul>
                 {countries.map((country) => (

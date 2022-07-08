@@ -19,7 +19,7 @@ export default function Job() {
     console.log({ jobs });
 
     return (
-        <div className="font-sans">
+        <div>
             <h1>job</h1>
             <ul>
                 {jobs.map((job) => (

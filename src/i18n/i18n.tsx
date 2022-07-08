@@ -30,13 +30,10 @@ type CommonTranslationKey =
     | 'language.link.switch-to-de'
     | 'dark-mode.button.lights-on'
     | 'dark-mode.button.lights-off'
+    | 'page.h1'
     | 'page-aside.h2';
 
-type DashboardTranslationKey = 'h1';
-
-export type TranslationKey =
-    | `common.${CommonTranslationKey}`
-    | `dashboard.${DashboardTranslationKey}`;
+export type TranslationKey = `common.${CommonTranslationKey}`;
 
 const replaceIndexWithInterpolation =
     (interpolations: (string | number)[] = []) =>

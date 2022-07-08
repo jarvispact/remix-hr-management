@@ -8,7 +8,6 @@ export const en: { [TK in TranslationKey]: string } = {
     'common.language.link.switch-to-de': 'switch to german',
     'common.dark-mode.button.lights-on': 'dark mode off',
     'common.dark-mode.button.lights-off': 'dark mode on',
+    'common.page.h1': 'HR Management',
     'common.page-aside.h2': 'Sidebar',
-
-    'dashboard.h1': 'HR Management',
 };
