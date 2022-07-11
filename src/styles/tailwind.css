@@ -4,7 +4,7 @@
 
 @layer components {
     .invisible-button {
-        @apply inline-flex items-center justify-center bg-transparent text-text hover:text-focus focus-visible:outline focus-visible:outline-focus focus-visible:outline-offset-2 focus-visible:outline-[1.5px];
+        @apply inline-flex items-center justify-center bg-transparent text-text focus-visible:outline focus-visible:outline-focus focus-visible:outline-offset-2 focus-visible:outline-[1.5px];
     }
 
     .aside-link {
@@ -106,4 +106,19 @@
         --color-aside-link-hover: var(--color-gray-700);
         --color-aside-link-active: var(--color-gray-600);
     }
+}
+
+@media only screen and (max-width: 1023px) {
+    .drawer {
+        position: fixed;
+        width: 280px;
+        height: 100%;
+        left: -280px;
+        transition: transform 150ms cubic-bezier(0.4, 0, 0.2, 1);;
+    }
+    
+    .drawer[data-is-open="true"] {
+        transform: translateX(280px);
+        box-shadow: 0px 0px 5px 2px rgba(0,0,0,0.45);
+    }   
 }

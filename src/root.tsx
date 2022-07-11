@@ -17,6 +17,7 @@ import { I18nProvider } from './i18n/i18n';
 import { createTranslationFunction, getSupportedLanguageCode } from './i18n/i18n';
 import type { Translations } from './i18n/translations';
 import { getTranslations } from './i18n/translations';
+import { PageProvider } from './page-context';
 import styles from './tailwind.css';
 
 export const meta: MetaFunction = ({ params }) => {
@@ -58,12 +59,14 @@ export default function App() {
             <body className="theme bg-surface-0">
                 <I18nProvider translations={translations}>
                     {({ t }) => (
-                        <Page
-                            header={<PageHeader h1={t('common.page.h1')} />}
-                            aside={<PageAside h2={t('common.page-aside.h2')} />}
-                        >
-                            <Outlet />
-                        </Page>
+                        <PageProvider>
+                            <Page
+                                header={<PageHeader h1={t('common.page.h1')} />}
+                                aside={<PageAside h2={t('common.page-aside.h2')} />}
+                            >
+                                <Outlet />
+                            </Page>
+                        </PageProvider>
                     )}
                 </I18nProvider>
                 <ScrollRestoration />
