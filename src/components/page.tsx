@@ -5,6 +5,7 @@ import { ids } from '~/dom-ids';
 import { usePageContext } from '~/page-context';
 import { cx } from '~/utils/cx';
 import { useClickOutside } from '~/utils/use-click-outside';
+import { useI18n } from '~/i18n/i18n';
 
 export type HomePageProps = {
     aside: ReactNode;
@@ -13,6 +14,7 @@ export type HomePageProps = {
 };
 
 export const Page = ({ header, aside, children }: HomePageProps) => {
+    const { t } = useI18n();
     const { isDrawerOpen, closeDrawer, closeDrawerButtonId } = usePageContext();
     const asideRef = useRef<HTMLDivElement>(null);
     useClickOutside([asideRef], closeDrawer);
@@ -28,6 +30,7 @@ export const Page = ({ header, aside, children }: HomePageProps) => {
             ></div>
             <button
                 id={closeDrawerButtonId}
+                aria-label={t('common.drawer.close') as string}
                 className={cx([
                     'invisible-button fixed top-[12px] transition-all',
                     !isDrawerOpen && 'opacity-0 left-[-100px] pointer-events-none',

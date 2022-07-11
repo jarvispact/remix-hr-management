@@ -26,6 +26,8 @@ export const getSupportedLanguageCode = (unknownLanguage?: string): SupportedLan
 type CommonTranslationKey =
     | 'meta.title'
     | 'meta.description'
+    | 'drawer.open'
+    | 'drawer.close'
     | 'language.link.switch-to-en'
     | 'language.link.switch-to-de'
     | 'dark-mode.button.lights-on'
