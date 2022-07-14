@@ -16,7 +16,7 @@ export const PageHeader = ({ h1 }: HeaderProps) => {
     const { openDrawer, openDrawerButtonId } = usePageContext();
 
     return (
-        <div className="flex justify-between items-center h-full px-6 bg-surface-1">
+        <div className="flex justify-between items-center h-full px-6 bg-surface-1 shadow-md">
             <div className="flex justify-between items-center gap-4">
                 <button
                     id={openDrawerButtonId}

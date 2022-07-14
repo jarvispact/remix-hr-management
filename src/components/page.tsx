@@ -51,7 +51,9 @@ export const Page = ({ header, aside, children }: HomePageProps) => {
             <header aria-labelledby={ids.pageHeader} className="h-[60px]">
                 {header}
             </header>
-            <main className="">{children}</main>
+            <main className="overflow-hidden">
+                <div className="overflow-y-auto h-full">{children}</div>
+            </main>
         </div>
     );
 };

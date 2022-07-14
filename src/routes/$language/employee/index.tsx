@@ -1,31 +1,19 @@
 import type { LoaderFunction } from '@remix-run/node';
 import { json } from '@remix-run/node';
 import { Link, useLoaderData } from '@remix-run/react';
+import type { Employee } from '~/domain/employee/types';
 import { db } from '~/pg.server';
 
-type TEmployee = {
-    employee_id: number;
-    first_name: string;
-    last_name: string;
-    email: string;
-    phone_number: string;
-    hire_date: string;
-    job_id: number;
-    salary: number;
-    manager_id: number;
-    department_id: number;
-};
-
 type LoaderData = {
-    employees: TEmployee[];
+    employees: Employee[];
 };
 
 export const loader: LoaderFunction = async () => {
     const res = await db.query('SELECT * FROM employees');
-    return json<LoaderData>({ employees: res.rows });
+    return json<LoaderData>({ employees: res.rows as Employee[] });
 };
 
-export default function Employee() {
+export default function EmployeeListPage() {
     const { employees } = useLoaderData<LoaderData>();
     console.log({ employees });
 

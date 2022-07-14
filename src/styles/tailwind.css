@@ -4,11 +4,15 @@
 
 @layer components {
     .invisible-button {
-        @apply inline-flex items-center justify-center bg-transparent text-text focus-visible:outline focus-visible:outline-focus focus-visible:outline-offset-2 focus-visible:outline-[1.5px];
+        @apply inline-flex items-center justify-center bg-transparent text-text focus-visible:outline outline-focus outline-offset-2 outline-[1.5px];
     }
 
     .aside-link {
         @apply p-3 flex items-center gap-4 rounded-sm outline-focus outline-1 focus-visible:outline hover:bg-aside-link-hover;
+    }
+
+    .card-link {
+        @apply hover:outline focus-visible:outline outline-focus outline-offset-2 outline-[1.5px];
     }
 }
 
@@ -108,7 +112,7 @@
     }
 }
 
-@media only screen and (max-width: 1023px) {
+@media only screen and (max-width: 1023.9px) {
     .drawer {
         position: fixed;
         width: 280px;

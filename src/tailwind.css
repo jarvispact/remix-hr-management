@@ -564,13 +564,13 @@ video {
   justify-content: center;
   background-color: transparent;
   color: var(--color-text);
+  outline-width: 1.5px;
+  outline-offset: 2px;
+  outline-color: var(--color-focus);
 }
 
 .invisible-button:focus-visible {
   outline-style: solid;
-  outline-width: 1.5px;
-  outline-offset: 2px;
-  outline-color: var(--color-focus);
 }
 
 .aside-link {
@@ -588,6 +588,20 @@ video {
 }
 
 .aside-link:focus-visible {
+  outline-style: solid;
+}
+
+.card-link {
+  outline-width: 1.5px;
+  outline-offset: 2px;
+  outline-color: var(--color-focus);
+}
+
+.card-link:hover {
+  outline-style: solid;
+}
+
+.card-link:focus-visible {
   outline-style: solid;
 }
 
@@ -634,6 +648,15 @@ video {
   left: 290px;
 }
 
+.mx-auto {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.block {
+  display: block;
+}
+
 .flex {
   display: flex;
 }
@@ -670,6 +693,22 @@ video {
   width: 2.5rem;
 }
 
+.w-full {
+  width: 100%;
+}
+
+.w-\[95\%\] {
+  width: 95%;
+}
+
+.max-w-5xl {
+  max-width: 64rem;
+}
+
+.flex-col {
+  flex-direction: column;
+}
+
 .items-center {
   align-items: center;
 }
@@ -680,6 +719,26 @@ video {
 
 .gap-4 {
   gap: 1rem;
+}
+
+.gap-16 {
+  gap: 4rem;
+}
+
+.gap-8 {
+  gap: 2rem;
+}
+
+.overflow-hidden {
+  overflow: hidden;
+}
+
+.overflow-y-auto {
+  overflow-y: auto;
+}
+
+.rounded-md {
+  border-radius: var(--radii-md);
 }
 
 .border-r {
@@ -715,6 +774,10 @@ video {
   padding: 0.5rem;
 }
 
+.p-8 {
+  padding: 2rem;
+}
+
 .px-1 {
   padding-left: 0.25rem;
   padding-right: 0.25rem;
@@ -725,8 +788,17 @@ video {
   padding-right: 1.5rem;
 }
 
+.py-12 {
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+}
+
 .pt-32 {
   padding-top: 8rem;
+}
+
+.pb-2 {
+  padding-bottom: 0.5rem;
 }
 
 .text-2xl {
@@ -752,6 +824,12 @@ video {
 
 .opacity-100 {
   opacity: 1;
+}
+
+.shadow-md {
+  --tw-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --tw-shadow-colored: 0 4px 6px -1px var(--tw-shadow-color), 0 2px 4px -2px var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
 
 .filter {
@@ -849,7 +927,7 @@ video {
   }
 }
 
-@media only screen and (max-width: 1023px) {
+@media only screen and (max-width: 1023.9px) {
   .drawer {
     position: fixed;
     width: 280px;
@@ -883,6 +961,12 @@ video {
 @media (prefers-reduced-motion: no-preference) {
   .motion-safe\:scroll-smooth {
     scroll-behavior: smooth;
+  }
+}
+
+@media (min-width: 768px) {
+  .md\:flex-row {
+    flex-direction: row;
   }
 }
 

@@ -2,11 +2,11 @@ import { Pool } from 'pg';
 
 const pool = new Pool();
 
-const query = async (sql: string, params?: (string | number)[]) => {
+const query = async <T>(sql: string, params?: (string | number)[]) => {
     const client = await pool.connect();
 
     try {
-        return client.query(sql, params);
+        return client.query<T>(sql, params);
     } catch (error) {
         console.log('error');
         throw new Response('Internal Error', {
