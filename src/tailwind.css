@@ -681,6 +681,10 @@ video {
   height: 60px;
 }
 
+.h-\[calc\(100\%-60px\)\] {
+  height: calc(100% - 60px);
+}
+
 .w-6 {
   width: 1.5rem;
 }

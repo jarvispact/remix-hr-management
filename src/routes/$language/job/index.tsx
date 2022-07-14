@@ -1,15 +1,18 @@
+import type { job } from '@prisma/client';
 import type { LoaderFunction } from '@remix-run/node';
 import { json } from '@remix-run/node';
 import { Link, useLoaderData } from '@remix-run/react';
-
-type TJob = { job_id: number; job_title: string; min_salary: number; max_salary: number };
+import { JobRespository } from '~/domain/job/repository.server';
 
 type LoaderData = {
-    jobs: TJob[];
+    jobs: job[];
 };
 
 export const loader: LoaderFunction = async () => {
-    return json<LoaderData>({ jobs: [] });
+    const jobs = await JobRespository.getAll();
+    console.log(jobs);
+
+    return json<LoaderData>({ jobs });
 };
 
 export default function Job() {
@@ -21,8 +24,10 @@ export default function Job() {
             <h1>job</h1>
             <ul>
                 {jobs.map((job) => (
-                    <li key={job.job_id}>
-                        <Link to={job.job_id.toString()}>{job.job_title}</Link>
+                    <li key={job.id}>
+                        <Link to={job.id}>
+                            {job.job_title} {job.min_salary} {job.max_salary}
+                        </Link>
                     </li>
                 ))}
             </ul>

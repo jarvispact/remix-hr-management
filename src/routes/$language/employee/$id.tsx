@@ -1,11 +1,11 @@
-import type { employees } from '@prisma/client';
+import type { employee } from '@prisma/client';
 import type { LoaderFunction } from '@remix-run/node';
 import { json } from '@remix-run/node';
 import { useLoaderData } from '@remix-run/react';
 import { EmployeeRespository } from '~/domain/employee/repository.server';
 
 type LoaderData = {
-    employee: employees;
+    employee: employee;
 };
 
 export const loader: LoaderFunction = async ({ params }) => {
@@ -17,7 +17,7 @@ export const loader: LoaderFunction = async ({ params }) => {
         });
     }
 
-    const employee = await EmployeeRespository.getById(Number.parseInt(id, 10));
+    const employee = await EmployeeRespository.getById(id);
 
     if (!employee) {
         throw new Response('Not Found', {

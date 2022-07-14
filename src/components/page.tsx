@@ -51,7 +51,7 @@ export const Page = ({ header, aside, children }: HomePageProps) => {
             <header aria-labelledby={ids.pageHeader} className="h-[60px]">
                 {header}
             </header>
-            <main className="overflow-hidden">
+            <main className="h-[calc(100%-60px)] overflow-hidden">
                 <div className="overflow-y-auto h-full">{children}</div>
             </main>
         </div>

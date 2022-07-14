@@ -1,15 +1,16 @@
+import type { country } from '@prisma/client';
 import type { LoaderFunction } from '@remix-run/node';
 import { json } from '@remix-run/node';
 import { Link, useLoaderData } from '@remix-run/react';
-
-type TCountry = { country_id: string; country_name: string; region_id: number };
+import { CountryRespository } from '~/domain/country/repository.server';
 
 type LoaderData = {
-    countries: TCountry[];
+    countries: country[];
 };
 
 export const loader: LoaderFunction = async () => {
-    return json<LoaderData>({ countries: [] });
+    const countries = await CountryRespository.getAll();
+    return json<LoaderData>({ countries });
 };
 
 export default function Country() {
@@ -21,8 +22,8 @@ export default function Country() {
             <h1>country</h1>
             <ul>
                 {countries.map((country) => (
-                    <li key={country.country_id}>
-                        <Link to={country.country_id.toString()}>{country.country_name}</Link>
+                    <li key={country.id}>
+                        <Link to={country.id}>{country.country_name}</Link>
                     </li>
                 ))}
             </ul>

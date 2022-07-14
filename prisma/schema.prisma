@@ -7,70 +7,63 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model countries {
-  country_id   String      @id @db.Char(2)
-  country_name String?     @db.VarChar(40)
-  region_id    Int
-  regions      regions     @relation(fields: [region_id], references: [region_id], onDelete: Cascade)
-  locations    locations[]
+model country {
+  id           String      @id @default(uuid())
+  country_code String?     @db.VarChar(255)
+  country_name String?     @db.VarChar(255)
+  locations    location[]
 }
 
-model departments {
-  department_id   Int         @id @default(autoincrement())
-  department_name String      @db.VarChar(30)
-  location_id     Int?
-  locations       locations?  @relation(fields: [location_id], references: [location_id], onDelete: Cascade)
-  employees       employees[]
+model department {
+  id              String      @id @default(uuid())
+  department_name String      @db.VarChar(255)
+  location_id     String?
+  locations       location?   @relation(fields: [location_id], references: [id], onDelete: Cascade)
+  employees       employee[]
 }
 
-model dependents {
-  dependent_id Int       @id @default(autoincrement())
-  first_name   String    @db.VarChar(50)
-  last_name    String    @db.VarChar(50)
-  relationship String    @db.VarChar(25)
-  employee_id  Int
-  employees    employees @relation(fields: [employee_id], references: [employee_id], onDelete: Cascade)
+model dependent {
+  id           String    @id @default(uuid())
+  first_name   String    @db.VarChar(255)
+  last_name    String    @db.VarChar(255)
+  relationship String    @db.VarChar(255)
+  employee_id  String
+  employees    employee  @relation(fields: [employee_id], references: [id], onDelete: Cascade)
 }
 
-model employees {
-  employee_id     Int          @id @default(autoincrement())
-  first_name      String?      @db.VarChar(20)
-  last_name       String       @db.VarChar(25)
-  email           String       @db.VarChar(100)
-  phone_number    String?      @db.VarChar(20)
+model employee {
+  id              String       @id @default(uuid())
+  first_name      String?      @db.VarChar(255)
+  last_name       String       @db.VarChar(255)
+  email           String       @db.VarChar(255)
+  phone_number    String?      @db.VarChar(255)
   hire_date       DateTime     @db.Date
-  job_id          Int
-  salary          Decimal      @db.Decimal(8, 2)
-  manager_id      Int?
-  department_id   Int?
-  departments     departments? @relation(fields: [department_id], references: [department_id], onDelete: Cascade)
-  jobs            jobs         @relation(fields: [job_id], references: [job_id], onDelete: Cascade)
-  employees       employees?   @relation("employeesToemployees_manager_id", fields: [manager_id], references: [employee_id], onDelete: Cascade)
-  dependents      dependents[]
-  other_employees employees[]  @relation("employeesToemployees_manager_id")
+  job_id          String
+  salary          Float        @db.DoublePrecision
+  manager_id      String?
+  department_id   String?
+  departments     department?  @relation(fields: [department_id], references: [id], onDelete: Cascade)
+  jobs            job          @relation(fields: [job_id], references: [id], onDelete: Cascade)
+  employees       employee?    @relation("employeesToemployees_manager_id", fields: [manager_id], references: [id], onDelete: Cascade)
+  dependents      dependent[]
+  other_employees employee[]   @relation("employeesToemployees_manager_id")
 }
 
-model jobs {
-  job_id     Int         @id @default(autoincrement())
-  job_title  String      @db.VarChar(35)
-  min_salary Decimal?    @db.Decimal(8, 2)
-  max_salary Decimal?    @db.Decimal(8, 2)
-  employees  employees[]
+model job {
+  id         String      @id @default(uuid())
+  job_title  String      @db.VarChar(255)
+  min_salary Float?      @db.DoublePrecision
+  max_salary Float?      @db.DoublePrecision
+  employees  employee[]
 }
 
-model locations {
-  location_id    Int           @id @default(autoincrement())
-  street_address String?       @db.VarChar(40)
-  postal_code    String?       @db.VarChar(12)
-  city           String        @db.VarChar(30)
-  state_province String?       @db.VarChar(25)
-  country_id     String        @db.Char(2)
-  countries      countries     @relation(fields: [country_id], references: [country_id], onDelete: Cascade)
-  departments    departments[]
-}
-
-model regions {
-  region_id   Int         @id @default(autoincrement())
-  region_name String?     @db.VarChar(25)
-  countries   countries[]
+model location {
+  id             String        @id @default(uuid())
+  street_address String?       @db.VarChar(255)
+  postal_code    String?       @db.VarChar(255)
+  city           String        @db.VarChar(255)
+  state_province String?       @db.VarChar(255)
+  country_id     String        @db.VarChar(255)
+  countries      country       @relation(fields: [country_id], references: [id], onDelete: Cascade)
+  departments    department[]
 }
