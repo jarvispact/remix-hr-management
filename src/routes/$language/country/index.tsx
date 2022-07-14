@@ -1,7 +1,6 @@
 import type { LoaderFunction } from '@remix-run/node';
 import { json } from '@remix-run/node';
 import { Link, useLoaderData } from '@remix-run/react';
-import { db } from '~/pg.server';
 
 type TCountry = { country_id: string; country_name: string; region_id: number };
 
@@ -10,8 +9,7 @@ type LoaderData = {
 };
 
 export const loader: LoaderFunction = async () => {
-    const res = await db.query('SELECT * FROM countries');
-    return json<LoaderData>({ countries: res.rows });
+    return json<LoaderData>({ countries: [] });
 };
 
 export default function Country() {

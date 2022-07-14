@@ -1,8 +1,6 @@
 import type { LoaderFunction } from '@remix-run/node';
 import { json } from '@remix-run/node';
 import { Link, useLoaderData } from '@remix-run/react';
-import { ids } from '~/dom-ids';
-import { db } from '~/pg.server';
 
 type TRegion = { region_id: number; region_name: string };
 
@@ -11,8 +9,7 @@ type LoaderData = {
 };
 
 export const loader: LoaderFunction = async () => {
-    const res = await db.query('SELECT * FROM regions');
-    return json<LoaderData>({ regions: res.rows });
+    return json<LoaderData>({ regions: [] });
 };
 
 export default function Region() {

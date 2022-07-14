@@ -1,7 +1,6 @@
 import type { LoaderFunction } from '@remix-run/node';
 import { json } from '@remix-run/node';
 import { Link, useLoaderData } from '@remix-run/react';
-import { db } from '~/pg.server';
 
 type TLocation = {
     location_id: number;
@@ -17,8 +16,7 @@ type LoaderData = {
 };
 
 export const loader: LoaderFunction = async () => {
-    const res = await db.query('SELECT * FROM locations');
-    return json<LoaderData>({ locations: res.rows });
+    return json<LoaderData>({ locations: [] });
 };
 
 export default function Location() {

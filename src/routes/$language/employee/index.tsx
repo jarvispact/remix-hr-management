@@ -1,16 +1,16 @@
+import type { employees } from '@prisma/client';
 import type { LoaderFunction } from '@remix-run/node';
 import { json } from '@remix-run/node';
 import { Link, useLoaderData } from '@remix-run/react';
-import type { Employee } from '~/domain/employee/types';
-import { db } from '~/pg.server';
+import { EmployeeRespository } from '~/domain/employee/repository.server';
 
 type LoaderData = {
-    employees: Employee[];
+    employees: employees[];
 };
 
 export const loader: LoaderFunction = async () => {
-    const res = await db.query('SELECT * FROM employees');
-    return json<LoaderData>({ employees: res.rows as Employee[] });
+    const employees = await EmployeeRespository.getAll();
+    return json<LoaderData>({ employees });
 };
 
 export default function EmployeeListPage() {

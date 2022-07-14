@@ -12,10 +12,12 @@
     "build:remix": "remix build",
     "dev": "source ./env/.env.development && run-p dev:*",
     "dev:css": "npm run generate:css -- --watch",
-    "generate:css": "npx tailwindcss -i ./src/styles/tailwind.css -o ./src/tailwind.css"
+    "generate:css": "npx tailwindcss -i ./src/styles/tailwind.css -o ./src/tailwind.css",
+    "create-test-data": "source ./env/.env.development && node ./create-test-data.js"
   },
   "dependencies": {
     "@heroicons/react": "^1.0.6",
+    "@prisma/client": "^4.0.0",
     "@remix-run/express": "^1.6.3",
     "@remix-run/node": "^1.6.3",
     "@remix-run/react": "^1.6.3",
@@ -33,11 +35,13 @@
     "@types/pg": "^8.6.5",
     "@types/react": "^18.0.15",
     "@types/react-dom": "^18.0.6",
+    "chance": "^1.1.8",
     "eslint": "^8.19.0",
     "eslint-config-prettier": "8.5.0",
     "eslint-plugin-prettier": "4.2.1",
     "nodemon": "^2.0.19",
     "npm-run-all": "^4.1.5",
+    "prisma": "^4.0.0",
     "tailwindcss": "^3.1.4",
     "typescript": "^4.7.4"
   },

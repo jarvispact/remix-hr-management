@@ -1,7 +1,6 @@
 import type { LoaderFunction } from '@remix-run/node';
 import { json } from '@remix-run/node';
 import { Link, useLoaderData } from '@remix-run/react';
-import { db } from '~/pg.server';
 
 type TJob = { job_id: number; job_title: string; min_salary: number; max_salary: number };
 
@@ -10,8 +9,7 @@ type LoaderData = {
 };
 
 export const loader: LoaderFunction = async () => {
-    const res = await db.query('SELECT * FROM jobs');
-    return json<LoaderData>({ jobs: res.rows });
+    return json<LoaderData>({ jobs: [] });
 };
 
 export default function Job() {
