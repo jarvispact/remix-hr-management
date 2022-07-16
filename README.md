@@ -10,6 +10,8 @@ a simple hr management web application to learn remix.run
 
 1. `npm i` to install all dependencies
 2. `npm run db:up` to start a postgres container and to apply the db dump
+2. `npm run prisma:generate` to generate the types and the prisma client
+2. `npm run create-test-data` to create the test data
 
 ## start in development mode
 

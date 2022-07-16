@@ -22,15 +22,6 @@ model department {
   employees       employee[]
 }
 
-model dependent {
-  id           String    @id @default(uuid())
-  first_name   String    @db.VarChar(255)
-  last_name    String    @db.VarChar(255)
-  relationship String    @db.VarChar(255)
-  employee_id  String
-  employees    employee  @relation(fields: [employee_id], references: [id], onDelete: Cascade)
-}
-
 model employee {
   id              String       @id @default(uuid())
   first_name      String?      @db.VarChar(255)
@@ -45,7 +36,6 @@ model employee {
   departments     department?  @relation(fields: [department_id], references: [id], onDelete: Cascade)
   jobs            job          @relation(fields: [job_id], references: [id], onDelete: Cascade)
   employees       employee?    @relation("employeesToemployees_manager_id", fields: [manager_id], references: [id], onDelete: Cascade)
-  dependents      dependent[]
   other_employees employee[]   @relation("employeesToemployees_manager_id")
 }
 

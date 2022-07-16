@@ -17,17 +17,6 @@ CREATE TABLE "department" (
 );
 
 -- CreateTable
-CREATE TABLE "dependent" (
-    "id" TEXT NOT NULL,
-    "first_name" VARCHAR(255) NOT NULL,
-    "last_name" VARCHAR(255) NOT NULL,
-    "relationship" VARCHAR(255) NOT NULL,
-    "employee_id" TEXT NOT NULL,
-
-    CONSTRAINT "dependent_pkey" PRIMARY KEY ("id")
-);
-
--- CreateTable
 CREATE TABLE "employee" (
     "id" TEXT NOT NULL,
     "first_name" VARCHAR(255),
@@ -67,9 +56,6 @@ CREATE TABLE "location" (
 
 -- AddForeignKey
 ALTER TABLE "department" ADD CONSTRAINT "department_location_id_fkey" FOREIGN KEY ("location_id") REFERENCES "location"("id") ON DELETE CASCADE ON UPDATE CASCADE;
-
--- AddForeignKey
-ALTER TABLE "dependent" ADD CONSTRAINT "dependent_employee_id_fkey" FOREIGN KEY ("employee_id") REFERENCES "employee"("id") ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "employee" ADD CONSTRAINT "employee_department_id_fkey" FOREIGN KEY ("department_id") REFERENCES "department"("id") ON DELETE CASCADE ON UPDATE CASCADE;

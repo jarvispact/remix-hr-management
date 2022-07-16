@@ -5,6 +5,7 @@
     "db:up": "source ./env/.env.development && docker-compose up -d",
     "db:down": "source ./env/.env.development && docker-compose down -v",
     "prisma:init": "prisma migrate dev --name init",
+    "prisma:generate": "prisma migrate generate",
     "prisma:reset": "prisma migrate reset",
     "dev:node": "source ./env/.env.development && nodemon ./server.js --watch ./server.js",
     "dev:remix": "remix watch",

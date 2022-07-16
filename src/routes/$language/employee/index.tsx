@@ -24,7 +24,8 @@ export default function EmployeeListPage() {
                 {employees.map((employee) => (
                     <li key={employee.id}>
                         <Link to={employee.id.toString()}>
-                            {employee.first_name} {employee.last_name}
+                            {employee.first_name} {employee.last_name} {employee.salary}{' '}
+                            {employee.job_id}
                         </Link>
                     </li>
                 ))}

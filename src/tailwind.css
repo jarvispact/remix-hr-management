@@ -987,6 +987,10 @@ video {
     display: none;
   }
 
+  .lg\:h-full {
+    height: 100%;
+  }
+
   .lg\:grid-cols-\[280px_auto\] {
     grid-template-columns: 280px auto;
   }
