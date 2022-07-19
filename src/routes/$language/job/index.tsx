@@ -10,14 +10,11 @@ type LoaderData = {
 
 export const loader: LoaderFunction = async () => {
     const jobs = await JobRespository.getAll();
-    console.log(jobs);
-
     return json<LoaderData>({ jobs });
 };
 
 export default function Job() {
     const { jobs } = useLoaderData<LoaderData>();
-    console.log({ jobs });
 
     return (
         <div>

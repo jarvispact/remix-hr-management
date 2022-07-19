@@ -15,7 +15,6 @@ export const loader: LoaderFunction = async () => {
 
 export default function Department() {
     const { departments } = useLoaderData<LoaderData>();
-    console.log({ departments });
 
     return (
         <div>

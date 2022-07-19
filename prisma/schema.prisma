@@ -29,14 +29,15 @@ model employee {
   email           String       @db.VarChar(255)
   phone_number    String?      @db.VarChar(255)
   hire_date       DateTime     @db.Date
+  leave_date      DateTime?    @db.Date
   job_id          String
   salary          Float        @db.DoublePrecision
   manager_id      String?
   department_id   String?
-  departments     department?  @relation(fields: [department_id], references: [id], onDelete: Cascade)
-  jobs            job          @relation(fields: [job_id], references: [id], onDelete: Cascade)
-  employees       employee?    @relation("employeesToemployees_manager_id", fields: [manager_id], references: [id], onDelete: Cascade)
-  other_employees employee[]   @relation("employeesToemployees_manager_id")
+  department      department?  @relation(fields: [department_id], references: [id], onDelete: Cascade)
+  job             job          @relation(fields: [job_id], references: [id], onDelete: Cascade)
+  manager         employee?    @relation("employeesToemployees_manager_id", fields: [manager_id], references: [id], onDelete: Cascade)
+  employees       employee[]   @relation("employeesToemployees_manager_id")
 }
 
 model job {

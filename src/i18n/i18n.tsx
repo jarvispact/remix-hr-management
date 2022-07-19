@@ -56,8 +56,8 @@ type Options = {
     renderHtmlTag?: (renderProps: UnknownHtmlRenderProps) => ReactNode;
 };
 
-const defaultRenderHtmlTag = (renderProps: UnknownHtmlRenderProps) =>
-    createElement(renderProps.htmlTag, renderProps.props, renderProps.children);
+const defaultRenderHtmlTag = ({ htmlTag, props, children }: UnknownHtmlRenderProps) =>
+    createElement(htmlTag, props, children);
 
 const supportedHtmlTags = ['a', 'i', 'b', 'strong'] as const;
 type SupportedHtmlTag = typeof supportedHtmlTags[number];

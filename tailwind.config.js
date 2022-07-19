@@ -45,12 +45,14 @@ module.exports = {
             'brand-light': 'var(--color-brand-light)',
             brand: 'var(--color-brand)',
             'brand-dark': 'var(--color-brand-dark)',
-            'brand-text': 'var(--color-brand-text)',
 
             'surface-0': 'var(--color-surface-0)',
             'surface-1': 'var(--color-surface-1)',
 
             text: 'var(--color-text)',
+            'brand-text': 'var(--color-text-brand)',
+            'danger-text': 'var(--color-text-danger)',
+            'success-text': 'var(--color-text-success)',
             border: 'var(--color-border)',
             focus: 'var(--color-focus)',
             'aside-link-hover': 'var(--color-aside-link-hover)',

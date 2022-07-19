@@ -11,10 +11,10 @@ type Props = {
 export const PageSection = ({ id, title, hideTitle, children }: Props) => {
     return (
         <section aria-labelledby={id} className="">
-            <h2 id={id} className={cx(['pb-2', hideTitle && 'sr-only'])}>
+            <h2 id={id} className={cx(['pb-2 text-lg', hideTitle && 'sr-only'])}>
                 {title}
             </h2>
-            <div>{children}</div>
+            {children}
         </section>
     );
 };

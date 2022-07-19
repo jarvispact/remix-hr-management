@@ -145,29 +145,63 @@ const withinTransaction = async (client, fn) => {
             const maxSalary = chance.integer({ min: 5000, max: 5100 });
 
             const results = await Promise.all(
-                [...new Array(getEmployeesPerDepartment())].map(() =>
-                    client
+                [...new Array(getEmployeesPerDepartment())].map((_, idx) => {
+                    const hireDate = chance.date({
+                        year: chance.integer({
+                            min: 2000,
+                            max: new Date().getFullYear(),
+                        }),
+                        month: chance.integer({ min: 0, max: new Date().getMonth() }),
+                    });
+
+                    const getLeaveDate = () => {
+                        const now = new Date();
+                        if (hireDate.getFullYear() >= now.getFullYear() - 5) return null;
+                        if (hireDate.getMonth() >= now.getMonth() - 5) return null;
+
+                        return new Date(
+                            chance.date({
+                                year: chance.integer({
+                                    min: hireDate.getFullYear() + 1,
+                                    max: now.getFullYear(),
+                                }),
+                                month: chance.integer({
+                                    min: hireDate.getMonth() + 1,
+                                    max: now.getMonth(),
+                                }),
+                                day: chance.integer({
+                                    min: 0,
+                                    max: now.getDate(),
+                                }),
+                            }),
+                        );
+                    };
+
+                    const leaveDate = getLeaveDate();
+
+                    if (leaveDate !== null && leaveDate.getTime() <= hireDate.getTime()) {
+                        console.log({ hireDate, leaveDate });
+                        throw new Error('leave_date cannot be before or equal to hire_date');
+                    }
+
+                    return client
                         .query(
-                            'insert into employee(id, first_name, last_name, email, phone_number, hire_date, salary, job_id, department_id) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) returning id',
+                            'insert into employee(id, first_name, last_name, email, phone_number, hire_date, leave_date, salary, job_id, department_id) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) returning id',
                             [
                                 chance.guid({ version: 4 }),
                                 chance.first(),
                                 chance.last(),
                                 chance.email(),
                                 chance.phone(),
-                                chance.date({
-                                    year: chance.pickone([
-                                        2000, 2001, 2002, 2003, 2004, 2005, 2020, 2021, 2022,
-                                    ]),
-                                    month: chance.integer({ min: 0, max: new Date().getMonth() }),
-                                }),
+                                hireDate,
+                                leaveDate,
                                 chance.integer({ min: minSalary, max: maxSalary }),
                                 getJobId(departmentResult),
                                 departmentResult.id,
                             ],
                         )
-                        .then((r) => r.rows[0]),
-                ),
+                        .then((r) => r.rows[0]);
+                }),
             );
 
             employeeResults.push(...results);

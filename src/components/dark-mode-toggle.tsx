@@ -8,6 +8,7 @@ type DarkModeAttribute = 'false' | 'true' | null;
 
 export const DarkModeToggle = () => {
     const { t } = useI18n();
+
     const [darkModeAttribute, setDarkModeAttribute] = useState<DarkModeAttribute>(
         document.body.getAttribute(darkModeAttrName) as DarkModeAttribute,
     );

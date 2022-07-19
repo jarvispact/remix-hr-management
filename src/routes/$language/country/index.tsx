@@ -15,7 +15,6 @@ export const loader: LoaderFunction = async () => {
 
 export default function Country() {
     const { countries } = useLoaderData<LoaderData>();
-    console.log({ countries });
 
     return (
         <div>

@@ -5,7 +5,6 @@ import { Link, useMatch, useParams } from 'react-router-dom';
 import { ids } from '~/dom-ids';
 import TemplateIcon from '@heroicons/react/outline/TemplateIcon';
 import GlobeIcon from '@heroicons/react/outline/GlobeIcon';
-import FlagIcon from '@heroicons/react/outline/FlagIcon';
 import LibraryIcon from '@heroicons/react/outline/LibraryIcon';
 import OfficeBuildingIcon from '@heroicons/react/outline/OfficeBuildingIcon';
 import BriefcaseIcon from '@heroicons/react/outline/BriefcaseIcon';
@@ -48,7 +47,6 @@ export const PageAside = ({ h2 }: AsideProps) => {
     const { isDrawerOpen, closeDrawer } = usePageContext();
     const { language = 'en' } = useParams<{ language: SupportedLanguage }>();
     const dashboardMatch = useMatch('/:language');
-    const regionMatch = useMatch('/:language/region');
     const countryMatch = useMatch('/:language/country');
     const locationMatch = useMatch('/:language/location');
     const departmentMatch = useMatch('/:language/department');
@@ -76,16 +74,8 @@ export const PageAside = ({ h2 }: AsideProps) => {
                         tabIndex={tabIndex}
                     />
                     <AsideLink
-                        active={!!regionMatch}
-                        icon={<GlobeIcon className="w-6 h-6" />}
-                        to={`/${language}/region`}
-                        text="Region"
-                        onClick={closeDrawer}
-                        tabIndex={tabIndex}
-                    />
-                    <AsideLink
                         active={!!countryMatch}
-                        icon={<FlagIcon className="w-6 h-6" />}
+                        icon={<GlobeIcon className="w-6 h-6" />}
                         to={`/${language}/country`}
                         text="Country"
                         onClick={closeDrawer}
